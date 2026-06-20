@@ -22,3 +22,21 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+@"
+node_modules/
+.env
+.env.local
+dist/
+build/
+coverage/
+
+.vscode/
+.idea/
+
+*.log
+*.tmp
+
+Thumbs.db
+.DS_Store
+"@ | Out-File -Encoding utf8 .gitignore
