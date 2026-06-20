@@ -1,0 +1,27 @@
+@"
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Environment files
+.env
+.env.*
+backend/.env
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+"@ | Out-File -Encoding utf8 .gitignore
