@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./Register.css";
 import { Link } from "react-router-dom";
-
+import libraryImage from "../assets/Screenshot 2026-06-21 112916.png";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
@@ -87,7 +87,7 @@ function Register() {
       </div>
       <div className="image-panel">
         <img
-          src="\Gemini_Generated_Image_ughiaeughiaeughi.png"
+          src={libraryImage}
           alt="Aesthetic Bright Library Loft"
         />
       </div>
