@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 function Courses() {
     const [courseThumbnail, setCourseThumbnail] = useState("");
@@ -12,7 +14,7 @@ function Courses() {
 
     const fetchCourses = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/courses");
+            const response = await axios.get(`${API_URL}/api/courses`);
             setCourses(response.data);
         } catch (error) {
             alert("Failed to fetch courses");
@@ -35,14 +37,14 @@ function Courses() {
         try {
             if (editId) {
                 const response = await axios.put(
-                    `http://localhost:5000/api/courses/${editId}`,
+                    `${API_URL}/api/courses/${editId}`,
                     courseData
                 );
                 alert(response.data.message);
                 setEditId(null);
             } else {
                 const response = await axios.post(
-                    "http://localhost:5000/api/courses",
+                    `${API_URL}/api/courses`,
                     courseData
                 );
                 alert(response.data.message);
@@ -71,7 +73,7 @@ function Courses() {
         const confirmDelete = window.confirm("Are you sure you want to delete?");
         if (!confirmDelete) return;
         try {
-            const response = await axios.delete(`http://localhost:5000/api/courses/${id}`);
+            const response = await axios.delete(`${API_URL}/api/courses/${id}`);
             alert(response.data.message);
             fetchCourses();
         } catch (error) {

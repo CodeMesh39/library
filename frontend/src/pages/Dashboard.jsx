@@ -1,5 +1,7 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Dashboard(){
   const [courseCount,setCourseCount]=useState(0);
   const [issuedCount,setIssuedCount]=useState(0);
@@ -11,7 +13,7 @@ function Dashboard(){
   },[]);
   const fetchCourseCount=async()=>{
     try{
-      const response=await axios.get("http://localhost:5000/api/course-count");
+      const response=await axios.get(`${API_URL}/api/course-count`);
       setCourseCount(response.data.totalCourses);
     }catch(error){
       console.log(error);
@@ -19,7 +21,7 @@ function Dashboard(){
   };
   const fetchLibraryCounts=async()=>{
     try{
-      const response=await axios.get("http://localhost:5000/api/all-books");
+      const response=await axios.get(`${API_URL}/api/all-books`);
       const books=response.data;
       setIssuedCount(books.filter(b=>b.status==="Issued").length);
       setPendingCount(books.filter(b=>b.status==="Pending").length);

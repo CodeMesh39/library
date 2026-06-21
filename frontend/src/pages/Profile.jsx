@@ -11,7 +11,7 @@ function Profile() {
         e.preventDefault();
         if (newPassword !== confirmPassword) return alert("Passwords do not match!");
         try {
-            const res = await axios.put("http://localhost:5000/api/change-password", {
+            const res = await axios.put(`${API_URL}/api/change-password`, {
                 email: user?.email, currentPassword, newPassword
             });
             alert(res.data.message);

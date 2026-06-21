@@ -1,5 +1,7 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Issued(){
   const [books,setBooks]=useState([]);
   const [courses,setCourses]=useState([]);
@@ -12,7 +14,7 @@ function Issued(){
   },[]);
   const fetchBooks=async()=>{
     try{
-      const res=await axios.get("http://localhost:5000/api/all-books");
+      const res=await axios.get(`${API_URL}/api/all-books`);
       setBooks(res.data);
     }catch(err){
       console.log(err);
@@ -20,7 +22,7 @@ function Issued(){
   };
   const fetchCourses=async()=>{
     try{
-      const res=await axios.get("http://localhost:5000/api/courses");
+      const res=await axios.get(`${API_URL}/api/courses`);
       setCourses(res.data);
     }catch(err){
       console.log(err);
@@ -33,7 +35,7 @@ function Issued(){
     const selectedCourse=courses.find(c=>c._id===selectedCourseId);
     if(!selectedCourse)return;
     try{
-      await axios.post("http://localhost:5000/api/all-books",{title:selectedCourse.title,borrowerId,status:"Issued"});
+      await axios.post(`${API_URL}/api/all-books`,{title:selectedCourse.title,borrowerId,status:"Issued"});
       alert("Book Issued Successfully!");
       setSelectedCourseId("");
       setBorrowerId("");
@@ -45,7 +47,7 @@ function Issued(){
   };
   const handleUpdateStatus=async(id,newStatus)=>{
     try{
-      await axios.put(`http://localhost:5000/api/all-books/${id}`,{status:newStatus});
+      await axios.put(`${API_URL}/api/all-books/${id}`,{status:newStatus});
       fetchBooks();
     }catch(err){
       console.log(err);
