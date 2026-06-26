@@ -33,7 +33,7 @@ function Login() {
             <div className="page-layout">
                 <div className="layout-left">
                     <img 
-                        src="images/ChatGPT Image Jun 17, 2026, 12_24_50 PM.png" 
+                        src="images\image.png" 
                         alt="Digital Library Dashboard Concept" 
                         className="hero-image" 
                     />
